@@ -63,7 +63,7 @@ Along with the game dependency chart, there are two additional documents for sup
 
 1. [Location Map]() : This map helps designers to understand the relative positions of the rooms -- which one is to the east/west/north/south of which room, etc.
 
-2. [Legend and Annotation](In-Search-of-Immortality/Detailed Location Map Illustration for Game.pdf): This illustration helps designers to understand the nodes with different shapes in the dependency chart -- which path is critical/alternative; which node represents death/victory, etc.
+2. [Legend and Annotation](https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/legend%20and%20Annotation%20for%20Game%20Chart.pdf): This illustration helps designers to understand the nodes with different shapes in the dependency chart -- which path is critical/alternative; which node represents death/victory, etc.
 
 ### Playtest Report During Interim Implementation:
 Finally, there is a preliminary [playtest report]() of the game. It records several critical checkpoints of the player's difficulty in this game. 
