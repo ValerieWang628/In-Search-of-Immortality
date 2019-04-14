@@ -61,7 +61,7 @@ Thus, the chart also includes concepts like critical path and alternative path.
 ### Two supplemental Document:
 Along with the game dependency chart, there are two additional documents for supplemental illustration:
 
-1. [Location Map]() : This map helps designers to understand the relative positions of the rooms -- which one is to the east/west/north/south of which room, etc.
+1. [Location Map](https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/Detailed%20Location%20Map%20Illustration%20for%20Game.pdf) : This map helps designers to understand the relative positions of the rooms -- which one is to the east/west/north/south of which room, etc.
 
 2. [Legend and Annotation](https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/legend%20and%20Annotation%20for%20Game%20Chart.pdf): This illustration helps designers to understand the nodes with different shapes in the dependency chart -- which path is critical/alternative; which node represents death/victory, etc.
 
