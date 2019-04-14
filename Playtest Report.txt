@@ -1,0 +1,23 @@
+Playtest report
+Yunzi Wang
+Andrew id: yunziw
+
+Playtester: my boyfriend, second year master student from CMU INI MSIN program, a lifelong gamer who has excessive obsession with Dota 2. Before this game, he never had patience for text adventure games.
+
+Notes:
+-	Has good instincts over classical traps (playtester avoided directly touching poisonous water, directly touching the ocean, directly escaping from the swamp, etc. )
+-	However, due to the lack of experience of text adventure, he overlooked the conversation with the prophet. As a result, he missed much information that is prompted in prophet’s words.
+-	Playtester didn’t drink the bottled water even if he has already filled the bottle with ocean water.
+-	Playtester easily ran out of the swamp even if player will not be allowed to exit until he defeats the ants(bug)
+-	Playtester directly killed the ants. He skipped other useless action options.
+-	Playtester created temporary fire, and tried to use it to search the bracken but failed.
+-	Missed Poseidon totally
+-	Missed the prophet’s words at the beginning until entering the castle, being asked by the guards about the biggest fear, and went back to the prophet to search for clues
+-	Can’t walk across the standing mirrors due to a bug
+
+Revision Plan:
+-	There were many useless action options that can be made to the prophet, such as kiss, hug, etc. This was intended to add fun to the game however, between the two real useful actions: bow to, and speak to, ‘speak to’ seem to be easily ignored. Therefore, I am going to emphasize the important of the prophet’s oral information from the beginning
+-	The map isn’t right. This is because of the wrong distance set to the exits. After the player exited from the swamp, the map totally went off. This might be due to the two sudden appearing exits after ants are defeated
+-	Add the importance of drinking that bottled water to journey necessities prompts made by the prophet
+-	Add reconciliation to using temporary fire to search for mirror in the bracken (shouldn’t be allowed because the fire is weak and is going to go off at any time)
+-	Fix the standing mirror bug
