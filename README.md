@@ -51,7 +51,7 @@ This will better help the player to understand the game.
 
 ## Game Design Documents:
 ### Main Document:
-This game is designed via a [game dependency chart](). (See what is a [game dependency chart](https://grumpygamer.com/puzzle_dependency_charts))
+This game is designed via a [game dependency chart](https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/Game%20Dependency%20Flow%20Chart%20for%20In%20Search%20of%20Immortality.pdf). (See what is a [game dependency chart](https://grumpygamer.com/puzzle_dependency_charts))
 
 This dependency chat is the main design document for this game.
 It turns out to be very similar to the project management chart I made before.
