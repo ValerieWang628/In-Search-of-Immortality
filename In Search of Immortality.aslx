@@ -1,0 +1,1252 @@
+<!--Saved by Quest 5.8.6794.35054-->
+<asl version="580">
+  <include ref="English.aslx" />
+  <include ref="Core.aslx" />
+  <game name="In Search of Immortality">
+    <gameid>ede95179-cbe2-4449-b603-dd22c89fc1e9</gameid>
+    <version>1.0</version>
+    <firstpublished>2019</firstpublished>
+    <author>Valerie Yunzi Wang</author>
+    <category>Fantasy</category>
+    <cover>Deep-Sea.jpg</cover>
+    <menufont>Georgia, serif</menufont>
+    <feature_asktell />
+    <attr name="feature_annotations" type="boolean">false</attr>
+    <attr name="feature_advancedscripts" type="boolean">false</attr>
+    <defaultforeground>White</defaultforeground>
+    <defaultbackground>Black</defaultbackground>
+    <defaultlinkforeground>Wheat</defaultlinkforeground>
+    <gridmap />
+    <attr name="autodescription_youcansee" type="int">0</attr>
+    <attr name="autodescription_youcango" type="int">0</attr>
+    <attr name="autodescription_description" type="int">2</attr>
+    <description type="string"></description>
+    <mapexitcolour>WhiteSmoke</mapexitcolour>
+    <respondtogridclicks />
+    <showpanes />
+    <panestheme>Vanilla</panestheme>
+    <mapscale type="int">20</mapscale>
+    <mapexitwidth type="int">2</mapexitwidth>
+    <statusandcompassattop type="boolean">false</statusandcompassattop>
+  </game>
+  <object name="the Ocean of Finman">
+    <inherit name="editor_room" />
+    <isroom />
+    <usedefaultprefix type="boolean">false</usedefaultprefix>
+    <prefix type="string"></prefix>
+    <description><![CDATA[<br/>The Ocean of Finman is a place full of danger. It is dark, deep and full of insane creatures. Thousands of villainous finmen swim here. They will eat you in the speediest way.<br/>]]></description>
+    <descprefix>You are now at</descprefix>
+    <attr name="grid_width" type="int">2</attr>
+    <attr name="grid_length" type="int">2</attr>
+    <attr name="grid_border">White</attr>
+    <attr name="grid_borderwidth" type="int">1</attr>
+    <attr name="grid_label">Ocean</attr>
+    <beforefirstenter type="script">
+      msg ("Welcome, brave explorer.")
+      msg ("  ")
+      msg ("You as the most qualified adventurer, have been selected to complete the journey of seeking immortality. The ultimate reward for you is the Amethyst of Immortality. If you manage to fetch it and keep it safe, you will protect yourself from any kind of demise.")
+      msg ("  ")
+      msg ("However, this journey will be extraordinarily dangerous. All these unfamiliar places can send you to the reaper easily. There are disgusting creatures and fatal mechanisms waiting to annihilate you.")
+      msg ("  ")
+      msg ("But there are also wise people hidden in the corners to guide you through all the difficulties. If you are willing to ask, they will tell you what you need to know.")
+      msg ("  ")
+      msg ("Be ready and careful, young traveler!")
+      msg ("     ")
+      msg ("     ")
+      msg ("     ")
+      msg ("     ")
+    </beforefirstenter>
+    <enter type="script">
+      msg ("In the center of the ocean, you can see the Prophet of Darkness waving at you.")
+    </enter>
+    <object name="player">
+      <inherit name="editor_object" />
+      <inherit name="editor_player" />
+    </object>
+    <exit alias="north" to="the Swamp of Ant Soldiers">
+      <inherit name="northdirection" />
+      <attr name="grid_length" type="int">4</attr>
+    </exit>
+    <exit alias="northwest" to="the Castle of Dwarf">
+      <inherit name="northwestdirection" />
+      <attr name="grid_length" type="int">1</attr>
+    </exit>
+    <object name="water">
+      <inherit name="editor_object" />
+      <look>The ocean water is flowing. It is dark, mysterious, and full of danger. There are innumerable finmen dashing through the water. They bite people, bite inferior animals, even each other. </look>
+      <alt type="stringlist">
+        <value>water</value>
+        <value>ocean</value>
+      </alt>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <alias>flowing ocean water</alias>
+      <suffix>around</suffix>
+      <scenery type="boolean">false</scenery>
+      <catchafinmanfrom type="script">
+        if (not Got(net)) {
+          msg ("You have no tools to catch them. All you can do is standing at the shore and watch them.")
+        }
+        else {
+          msg ("Stare at one finman, and use the net to catch one!")
+        }
+      </catchafinmanfrom>
+      <touch type="script">
+        if (not GetBoolean(water, "tamed")) {
+          msg ("Unfortunately, you touched the unsanctified ocean water.")
+          msg ("You were poisoned to death.")
+          finish
+        }
+        else {
+          msg ("Be careful with the sly finmen.")
+        }
+      </touch>
+      <tame type="script">
+        if (GetBoolean(spell, "memorized")) {
+          SetObjectFlagOn (water, "tamed")
+          msg ("You have now tamed the water.")
+          msg ("Feel free to dive in.")
+        }
+        else {
+          msg ("If you don't know the magic spell yet, the ocean is still very dangerous. Don't try to touch it until you have used the magic spell to fully tame the water. Be careful.")
+        }
+      </tame>
+      <singto type="script">
+        msg ("Nothing changed because your singing is too ordinary.")
+      </singto>
+      <singwhalesong type="script">
+        if (not GetBoolean(singing ability, "acquired")) {
+          msg ("You don't even know how to sing a whalesong.")
+        }
+        else {
+          msg ("You have successfully awakened Poseidon.")
+          MakeObjectVisible (Poseidon)
+        }
+      </singwhalesong>
+    </object>
+    <object name="prophet">
+      <inherit name="editor_object" />
+      <inherit name="namedmale" />
+      <alias>the Prophet of Darkness</alias>
+      <suffix>waving at you</suffix>
+      <alt type="stringlist">
+        <value>the prophet</value>
+        <value>the old man</value>
+      </alt>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <look><![CDATA[He is an aged man in a white, coarse gown. With silver long hair flowing in the air, you can see his merciful eyes with wrinkles all around. This old man has a pair of giant hands, full of calluses. He is the one with unparalleled wisdom and foresights.<br/> ]]></look>
+      <kiss>"Woah, too close, huh?"</kiss>
+      <hug>"Well, you don't have to."</hug>
+      <bowto type="script">
+        if (GetBoolean(bottle, "given")) {
+          msg ("\"You are welcome.\"")
+        }
+        else {
+          MakeObjectVisible (bottle)
+          msg ("A water bottle appeared in the Prophet's hand.")
+          msg ("And he has now added it into your backpack.")
+          AddToInventory (bottle)
+          SetObjectFlagOn (bottle, "given")
+          msg ("The Prophet says, \"this bottle will be very useful. I grant you this container in case you have to conquer the most cruel enemies.\"")
+          msg ("\"Kid, now, look at your backpack.\"")
+        }
+      </bowto>
+      <speak type="script">
+        msg ("\"Well, there are many things you need to know. First of all, the ocean water here is extremely dangerous. Don't drink it until you have detoxified it.\"")
+        msg ("\"Ask me about the biggest fear of dwarves, your journey necessities, and the magic spell. I'll tell you as much as I can.\"")
+        msg ("   ")
+        msg ("Hint: type in \"ask the Prophet about xxx\"")
+      </speak>
+      <ask type="scriptdictionary">
+        <item key="dwarves' biggest fear">
+          msg ("“You will need to know the answer in order to get into the dwarf king's castle.\"")
+          msg ("\"What is the biggest fear of the dwarves?”")
+          msg ("\"Remember it!\"")
+          msg ("\"It is, pneumonoultramicroscopicsilicovolcanoconiosis.\"")
+          msg ("\"It is a deadly disease which can kill dwarves easily. Therefore, they have been protecting themselves from it and keeping the Amethyst of Immortality safe.\"")
+          msg ("\"Repeat after me, it is, pneumonoultramicroscopicsilicovolcanoconiosis.\"")
+        </item>
+        <item key="the journey necessities">
+          msg ("\"You need a lot.\"")
+          msg ("\"...Something that provides you with heat and light.\"")
+          msg ("\"Something that reflects yourself and needs light to do that.\"")
+          msg ("\"Something that makes that light last long.\"")
+          msg ("\"Something that captures things.\"")
+          msg ("\"Something that help you see things you won't notice before.\"")
+          msg ("\"Something that makes one thing detach from another...\"")
+        </item>
+        <item key="the magic spell">
+          msg ("\"The spell is ...\" The old man whispered to your ear.")
+          SetObjectFlagOn (spell, "memorized")
+          msg ("\"Kid, you have memorized the spell. You are now empowered to detoxify the ocean water and make it poisonous again. Now try to lay a spell to the water!\"")
+        </item>
+        <item key="tools">
+          msg ("\"You will only get the tools after you spare no efforts.\"")
+        </item>
+      </ask>
+      <object name="bottle">
+        <inherit name="editor_object" />
+        <visible type="boolean">false</visible>
+        <alias>water bottle</alias>
+        <displayverbs type="stringlist">
+          <value>Look at</value>
+        </displayverbs>
+        <look>A plain, empty, glass bottle.</look>
+        <take type="boolean">false</take>
+        <takemsg>You are now taking the bottle with you.</takemsg>
+        <drop type="boolean">false</drop>
+        <usedefaultprefix type="boolean">false</usedefaultprefix>
+        <inventoryverbs type="stringlist">
+          <value>Look at</value>
+        </inventoryverbs>
+        <alt type="stringlist">
+          <value>water bottle</value>
+          <value>bottled water</value>
+        </alt>
+        <drinkwaterfrom type="script">
+          msg ("Well, it's empty.")
+          msg ("There is nothing in the bottle to drink.")
+        </drinkwaterfrom>
+        <dipintoocean type="script">
+          if (game.pov.parent = the Ocean of Finman) {
+            msg ("Now the bottle is full of the ocean water.")
+            RemoveObject (bottle)
+            AddToInventory (bottled water)
+            MakeObjectVisible (bottled water)
+          }
+          else {
+            msg ("You are not even close to the ocean.")
+          }
+        </dipintoocean>
+      </object>
+      <object name="spell">
+        <inherit name="editor_object" />
+        <visible type="boolean">false</visible>
+        <usedefaultprefix type="boolean">false</usedefaultprefix>
+        <useindividualverblist />
+        <alt type="stringlist">
+          <value>the spell</value>
+          <value>spell</value>
+        </alt>
+        <alias>magic spell</alias>
+      </object>
+    </object>
+    <object name="bottled water">
+      <inherit name="editor_object" />
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <useindividualverblist />
+      <visible type="boolean">false</visible>
+      <drop type="boolean">false</drop>
+      <alt type="stringlist">
+        <value>water</value>
+        <value>bottle</value>
+      </alt>
+      <drink type="script">
+        if (GetBoolean(bottled water, "detoxified")) {
+          msg ("You are now able to sing whalesongs.")
+          msg ("Go to the ocean water and sing to see what happens.")
+          SetObjectFlagOn (singing ability, "acquired")
+        }
+        else {
+          msg ("You are poisoned to death. Game Over.")
+          finish
+        }
+      </drink>
+      <laymagicspellto type="script">
+        if (GetBoolean(spell, "memorized")) {
+          if (not GetBoolean(bottled water, "detoxified")) {
+            SetObjectFlagOn (bottled water, "detoxified")
+            msg ("The bottled water is now detoxified.")
+          }
+          else {
+            SetObjectFlagOff (bottled water, "detoxified")
+            msg ("The bottled water is now poisonous again.")
+          }
+        }
+        else {
+          msg ("But you don't know the magic spell yet. You need a man with aged wisdom to tell you what the spell is.")
+        }
+      </laymagicspellto>
+      <squeeze type="script">
+        if (not game.pov.parent = the Swamp of Ant Soldiers) {
+          msg ("You squeezed a little bit of water out of the bottle.")
+        }
+        else {
+          if (GetBoolean(bottled water, "detoxified")) {
+            msg ("Detoxified ocean water cannot kill any ants.")
+          }
+          else {
+            msg ("A few ants were poisoned to death. You need to get water to more ants!")
+          }
+        }
+      </squeeze>
+      <splash type="script">
+        if (not game.pov.parent = the Swamp of Ant Soldiers) {
+          msg ("Yo, don't waste water.You'll need it.")
+        }
+        else {
+          if (GetBoolean(ant, "killed")) {
+            msg ("Now that the ants were killed, you are splashing the water for nothing.")
+          }
+          else {
+            msg ("Congratulations, you killed all the ants.")
+            msg ("A hole appeared in the center of the swamp. And the exits appeared. Feel free to go out anytime.")
+            SetObjectFlagOn (ant, "killed")
+            MakeObjectInvisible (ant)
+            MakeObjectVisible (hole)
+            MakeExitVisible (swampToCastle)
+            MakeExitVisible (swampToForest)
+            MakeExitVisible (swampToOcean)
+          }
+        }
+      </splash>
+    </object>
+    <object name="singing ability">
+      <inherit name="editor_object" />
+      <visible type="boolean">false</visible>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+    </object>
+    <object name="Poseidon">
+      <inherit name="editor_object" />
+      <inherit name="namedmale" />
+      <visible type="boolean">false</visible>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <look>Poseidon is a strong man. With athletic muscles, he takes charge of the sea, the horses and earthquakes. As the second son of titans Cronus and Rhea, Poseidon is fearless. He supports the Greeks against the Trojans. After the war, he fell asleep for three thousand years, sunk in the deep ocean. And the evil finmen grasped the chance to dominate the waters and started to slaughter everything.</look>
+      <listen type="script">
+        msg ("\"Young explorer, thank you for waking me up. I have been away for too long. \"")
+        msg ("\"I can tell you the stories I have been through. Ask me about finmen, the Prophet, and the treasure.\"")
+        msg ("   ")
+        msg ("Hint: type in \"ask Poseidon about xxx\"")
+      </listen>
+      <telltodefault type="script">
+        msg ("\"You shouldn't get too greedy.\"")
+      </telltodefault>
+      <askdefault type="script">
+        msg ("\"I have been asleep for too long.\"")
+        msg ("\"There are certain things that I don't know.\"")
+      </askdefault>
+      <ask type="scriptdictionary">
+        <item key="finmen">
+          msg ("\"These evil finmen!!! They took charge of this ocean when I was asleep. They killed indigenous creatures and replaced them with their own species. They ate too much as their fins are full of fat and dirty oil. If you burn the fins, the oil will make the flame keep flaming forever.\"")
+        </item>
+        <item key="the Prophet">
+          msg ("\"He is very powerful. Thanks to him, the finmen didn't find where I have been asleep. I am still alive...\"")
+        </item>
+        <item key="treasure">
+          msg ("\"I do have some treasure...I can give it to you if you tell me to offer you something.\"")
+          msg ("   ")
+          msg ("Hint: type in \"tell Poseidon to offer something\"")
+        </item>
+      </ask>
+      <tellto type="scriptdictionary">
+        <item key="offer something">
+          AddToInventory (magnifier)
+          MakeObjectVisible (magnifier)
+          SetObjectFlagOn (magnifier, "acquired")
+          msg ("\"Well, although I am a little bit reluctant, you are a brave young explorer. I'll help you make through.\"")
+          msg ("Poseidon put the Crystal Magnifier into your backpack.")
+          msg ("\"Now you have another powerful device. Still, be careful. You can die easily here.\"")
+        </item>
+      </tellto>
+      <object name="magnifier">
+        <inherit name="editor_object" />
+        <alias>the Crystal Magnifier</alias>
+        <visible type="boolean">false</visible>
+        <usedefaultprefix type="boolean">false</usedefaultprefix>
+        <displayverbs type="stringlist">
+          <value>Look at</value>
+        </displayverbs>
+        <look>This mirror looks ordinary at the first glance. However, if you take a closer look, it is made of black mercury. It reflects the light differently. And it is embraced by a silver shell, and mounted with sand-sized fire opals. The granular opals have protected the mirror for thousands of years. With this magnifier, you will be able to examine things you won't notice with your naked eyes before.</look>
+        <inventoryverbs type="stringlist">
+          <value>Look at</value>
+        </inventoryverbs>
+        <alt type="stringlist">
+          <value>crystal</value>
+        </alt>
+      </object>
+    </object>
+    <object name="finmen">
+      <inherit name="editor_object" />
+      <inherit name="plural" />
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <suffix>swiftly swimming in the ocean</suffix>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <inventoryverbs type="stringlist">
+        <value>Look at</value>
+      </inventoryverbs>
+      <look>The finmen are disgusting. They are human like, but with slippery and sticky fins. Their bellies swell up high because the bellies are filled with corpses of eaten creatures, garbage, and dirty body oil. These finmen are extremely good at swimming because speed helps them capture inferior animals. Once they catch their preys, they tortured the preys to death and enjoy their bloody feast in a graceful way.</look>
+      <alt type="stringlist">
+        <value>finman</value>
+      </alt>
+      <trap type="script">
+        if (not Got(net)) {
+          msg ("With what? Your hands? Hmmm, doesn't seem approachable.")
+        }
+        else {
+          msg ("You are a genius. You caught a bouncing finmen. That thing seems to be an infant finmen. It is screaming and trying its best to get itself out of the net. (nice try!)")
+          AddToInventory (finmen)
+        }
+      </trap>
+      <chop type="script">
+        if (Got(finmen)) {
+          msg ("Chop, chop! Now you chopped the two fins of the finman. Nice job.")
+          MakeObjectVisible (fins)
+          AddToInventory (fins)
+        }
+        else {
+          msg ("Catch a finman first!")
+        }
+      </chop>
+    </object>
+    <object name="oil">
+      <inherit name="editor_object" />
+      <visible type="boolean">false</visible>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <inventoryverbs type="stringlist">
+        <value>Look at</value>
+      </inventoryverbs>
+      <look>The dirty oil is oozing...</look>
+      <collect type="script">
+        msg ("Now the oil is carefully kept in your backpack.")
+        AddToInventory (oil)
+      </collect>
+      <diptorchin type="script">
+        if (ListContains(ScopeVisible(), temporary lit torch)) {
+          msg ("Wow, thanks to the magic oil. The fire will last forever.")
+          MakeObjectVisible (lit torch)
+          AddToInventory (lit torch)
+          RemoveObject (temporary lit torch)
+        }
+        else if (Got(torch)) {
+          msg ("Now the dry torch is fully penetrated with oil. What about lighting it?")
+          AddToInventory (oil penetrated torch)
+          MakeObjectVisible (oil penetrated torch)
+          RemoveObject (torch)
+        }
+        else {
+          msg ("Where is the torch?")
+        }
+      </diptorchin>
+    </object>
+    <object name="fins">
+      <inherit name="editor_object" />
+      <visible type="boolean">false</visible>
+      <inventoryverbs type="stringlist">
+        <value>Look at</value>
+      </inventoryverbs>
+      <look>Although they have been cut, they are still bouncing with black oil oozing from them.</look>
+      <tap>The fins keep bouncing on the ground.</tap>
+      <pierce>These finmen would never be willing to see this abuse.</pierce>
+      <burn type="script">
+        if (Got(temporary lit torch)) {
+          msg ("The fins melted in the extreme high heat and left sheer oil shining on the ground.")
+          MakeObjectVisible (oil)
+          RemoveObject (fins)
+          MoveObjectHere (oil)
+        }
+        else if (ListContains(ScopeReachable(), temporary fire)) {
+          msg ("The fins melted in the extreme high heat and left sheer oil shining on the ground.")
+          MakeObjectVisible (oil)
+          RemoveObject (fins)
+          MoveObjectHere (oil)
+        }
+        else {
+          msg ("Where is the fire?")
+        }
+      </burn>
+    </object>
+    <object name="lit torch">
+      <inherit name="editor_object" />
+      <visible type="boolean">false</visible>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <look>This is a torch light with everlasting fire.</look>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <inventoryverbs type="stringlist">
+        <value>Look at</value>
+      </inventoryverbs>
+    </object>
+    <object name="oil penetrated torch">
+      <inherit name="editor_object" />
+      <visible type="boolean">false</visible>
+      <look>It is a torch with no flame but saturated with dirty oil extracted from the fins.</look>
+      <hold>Holding it is just holding it. It needs fire.</hold>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <inventoryverbs type="stringlist">
+        <value>Look at</value>
+      </inventoryverbs>
+      <light type="script">
+        if (ListContains(ScopeVisible(), temporary fire)) {
+          msg ("Now your torch is ready to burn forever!")
+          AddToInventory (lit torch)
+          MakeObjectVisible (lit torch)
+          RemoveObject (oil penetrated torch)
+        }
+        else {
+          msg ("You have to get the fire.")
+        }
+      </light>
+    </object>
+  </object>
+  <object name="the Forest of Ghosts">
+    <inherit name="editor_room" />
+    <usedefaultprefix type="boolean">false</usedefaultprefix>
+    <description>This is a quiet forest where all aged kinds of woods exist. Moonlight shines through the woods. Willows, oaks, pines, and bracken. Plants here are useful. After all, many natural treasures come from the herb. As one of the most peaceful places in the world, this forest is the shelter of many birds and mammals.</description>
+    <attr name="grid_width" type="int">2</attr>
+    <attr name="grid_length" type="int">2</attr>
+    <attr name="grid_label">Forest</attr>
+    <exit alias="southeast" to="the Castle of Dwarf">
+      <inherit name="southeastdirection" />
+      <attr name="grid_length" type="int">1</attr>
+    </exit>
+    <object name="net">
+      <inherit name="editor_object" />
+      <visible type="boolean">false</visible>
+      <alias>the willow twig net</alias>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <inventoryverbs type="stringlist">
+        <value>Look at</value>
+      </inventoryverbs>
+      <look>A tightly weaved net. It still remains very durable underwater. No creatures can escape from it.</look>
+      <capturesomething type="script">
+        if (not game.pov.parent = the Ocean of Finman) {
+          msg ("Why not go to some waters to see how capable this net is?")
+        }
+        else {
+          msg ("Think about what you want to and what you can catch here! Use your effort when you have to.")
+        }
+      </capturesomething>
+    </object>
+    <object name="oaks">
+      <inherit name="editor_object" />
+      <inherit name="plural" />
+      <look>Oaks are just oaks.</look>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <search>Nothing special out there.</search>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+    </object>
+    <object name="bracken">
+      <inherit name="editor_object" />
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <look>Ordinary bracken.</look>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <search type="script">
+        if (Got(lit torch)) {
+          msg ("Guess what you have found, a lost mirror glow in the woods. Don't you wanna pick it up?")
+          MakeObjectVisible (mirror)
+        }
+        else {
+          msg ("It is just so dark. You can feel there is something but you just can't figure out where it is. You need some light. I mean, not only moonlight.")
+        }
+      </search>
+    </object>
+    <object name="willows">
+      <inherit name="editor_object" />
+      <inherit name="plural" />
+      <look>Willows are precious in this forest. They have strong, flexible, but durable branches.</look>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <inventoryverbs type="stringlist">
+        <value>Look at</value>
+      </inventoryverbs>
+      <search>The willows themselves are treasures.</search>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <cut type="script">
+        if (Got(ax)) {
+          msg ("With thousands of cuts, you managed to slice branches to long, durable willow twigs. You can't wait to have them.")
+          AddToInventory (twigs)
+          MakeObjectVisible (twigs)
+        }
+        else {
+          msg ("where is your tool?")
+        }
+      </cut>
+    </object>
+    <object name="twigs">
+      <inherit name="editor_object" />
+      <inherit name="plural" />
+      <visible type="boolean">false</visible>
+      <inventoryverbs type="stringlist">
+        <value>Look at</value>
+      </inventoryverbs>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <alias>willow twigs</alias>
+      <look>Slim, long twigs cut from branches. They are like threads.</look>
+      <twist>Do a 720 degree twist? You are surprised that they are so flexible. </twist>
+      <stretch>Oh wow, they are so elastic.</stretch>
+      <stepon>They still don't break if you do so.</stepon>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <weave type="script">
+        msg ("After careful weaving, you turned the twigs to a large, durable net that can catch things! ")
+        msg ("You are so excited to put it in your backpack.")
+        AddToInventory (net)
+        RemoveObject (twigs)
+        MakeObjectVisible (net)
+      </weave>
+    </object>
+    <object name="pines">
+      <inherit name="editor_object" />
+      <inherit name="plural" />
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <look>Pines are extremely beautiful with sparks, because they hold fire longer and create colorful flames.</look>
+      <touch>Pine trees feel like rough wallpapers.</touch>
+      <smell>Almost feel like Christmas.</smell>
+      <shake>Pine cones keep falling.</shake>
+      <hug>They are too huge to be hugged by your arms.</hug>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <cut type="script">
+        if (Got(ax)) {
+          msg ("With thousands of cuts, you managed to create two thick pine sticks.")
+          AddToInventory (pine sticks)
+          MakeObjectVisible (pine sticks)
+        }
+        else {
+          msg ("where is your tool?")
+        }
+      </cut>
+    </object>
+    <object name="pine sticks">
+      <inherit name="editor_object" />
+      <inherit name="plural" />
+      <visible type="boolean">false</visible>
+      <useindividualverblist type="boolean">false</useindividualverblist>
+      <drum>Wow, nice playing. Good entertainment, though.</drum>
+      <look>Thick, heavy pine sticks.</look>
+      <inventoryverbs type="stringlist">
+        <value>Look at</value>
+      </inventoryverbs>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <carve type="script">
+        msg ("Excellent!")
+        msg ("Now, one pine stick has been carved to a trusty torch, but with no fire.")
+        MakeObjectVisible (torch)
+        AddToInventory (torch)
+      </carve>
+      <snap type="script">
+        msg ("\"Crack!\"")
+        msg ("If you snap more, you'll understand the concept of binary tree.")
+      </snap>
+      <drill type="script">
+        if (Got(torch)) {
+          msg ("With no other tools, you successfully create temporary fire because of the constant friction between wooden sticks.")
+          MakeObjectVisible (temporary fire)
+          MoveObjectHere (temporary fire)
+        }
+        else {
+          msg ("You created fire, but it died too quickly. It went away with the wind.")
+        }
+      </drill>
+    </object>
+    <object name="torch">
+      <inherit name="editor_object" />
+      <visible type="boolean">false</visible>
+      <useindividualverblist type="boolean">false</useindividualverblist>
+      <look>A thick pine stick with special shapes at the tip part in order to get lit more easily.</look>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <inventoryverbs type="stringlist">
+        <value>Look at</value>
+      </inventoryverbs>
+      <tap>Tom, tom!</tap>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <light type="script">
+        if (not ListContains(ScopeVisible(), temporary fire)) {
+          msg ("Where is the fire?")
+        }
+        else {
+          msg ("You lit the torch! Now the torch is flaming in a magic hue.")
+          msg ("But the torch will not last forever.")
+          AddToInventory (temporary lit torch)
+          RemoveObject (torch)
+          MakeObjectVisible (temporary lit torch)
+        }
+      </light>
+    </object>
+    <object name="temporary fire">
+      <inherit name="editor_object" />
+      <visible type="boolean">false</visible>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <useindividualverblist type="boolean">false</useindividualverblist>
+      <look>A bleak flame burning.</look>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <inventoryverbs type="stringlist">
+        <value>Look at</value>
+      </inventoryverbs>
+      <playwith>Hot, too hot!</playwith>
+    </object>
+    <object name="temporary lit torch">
+      <inherit name="editor_object" />
+      <visible type="boolean">false</visible>
+      <look>A torch with bleak fire that might go off at any time.</look>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <inventoryverbs type="stringlist">
+        <value>Look at</value>
+      </inventoryverbs>
+    </object>
+    <object name="mirror">
+      <inherit name="editor_object" />
+      <alias>lost mirror of Dwarf</alias>
+      <visible type="boolean">false</visible>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <look>It is made of crystal mercury. </look>
+      <inventoryverbs type="stringlist">
+        <value>Look at</value>
+        <value>Drop</value>
+      </inventoryverbs>
+      <drop />
+      <dropmsg>Unbreakable!</dropmsg>
+      <fetchandtake type="script">
+        AddToInventory (mirror)
+        msg ("You got it!")
+      </fetchandtake>
+    </object>
+    <exit alias="east" to="the Swamp of Ant Soldiers">
+      <inherit name="eastdirection" />
+      <attr name="grid_length" type="int">4</attr>
+    </exit>
+  </object>
+  <object name="the Castle of Dwarf">
+    <inherit name="editor_room" />
+    <usedefaultprefix type="boolean">false</usedefaultprefix>
+    <descprefix>You are at the gate of</descprefix>
+    <description>This a very grand castle. Although owned by dwarves, it is still three times larger than Hogwartz. Every furniture here is huge, and dwarves will have to climb storeys of ladders to get to a simple chair. You will feel an awkward atmosphere here because of this discrepancy.</description>
+    <attr name="grid_width" type="int">2</attr>
+    <attr name="grid_length" type="int">2</attr>
+    <attr name="grid_label">Castle</attr>
+    <exit alias="southeast" to="the Ocean of Finman">
+      <inherit name="southeastdirection" />
+      <attr name="grid_length" type="int">1</attr>
+    </exit>
+    <exit alias="northeast" to="the Swamp of Ant Soldiers">
+      <inherit name="northeastdirection" />
+      <attr name="grid_length" type="int">1</attr>
+    </exit>
+    <exit alias="northwest" to="the Forest of Ghosts">
+      <inherit name="northwestdirection" />
+      <attr name="grid_length" type="int">1</attr>
+    </exit>
+    <object name="guard dwarves">
+      <inherit name="editor_object" />
+      <inherit name="maleplural" />
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <look>The two guards have very short legs. They look ugly, but responsible, probably because they have been guarding this quiet castle for thousands of years. Don't talk to them in an easy tone. They will only trust you if you've got something.</look>
+      <showmirrorto type="script">
+        if (not Got(mirror)) {
+          msg ("Where is your mirror?")
+          msg ("You have to show your mirror to the guard as a proof of your capability!")
+        }
+        else {
+          msg ("The guards looked at the mirror and said: \"Whoa, this is what our lord has lost! You found it!\"")
+          msg ("They keep saying: \"But our lord would not let you in without 100% trust. Now, tell us about our biggest fear!\"")
+        }
+      </showmirrorto>
+      <tell type="scriptdictionary">
+        <item key="pneumonoultramicroscopicsilicovolcanoconiosis">
+          msg ("\"You now have the answer. Feel free to step in.\"")
+          MoveObject (player, the Mirror Ballroom)
+        </item>
+      </tell>
+    </object>
+  </object>
+  <object name="the Throne Hall">
+    <inherit name="editor_room" />
+    <usedefaultprefix type="boolean">false</usedefaultprefix>
+    <descprefix>Welcome to</descprefix>
+    <description><![CDATA[This is the ultimate room to success, which means you are only steps away from immortality. Everything in the world has been waiting for this moment.<br/>Now this room has a huge throne in the center. It is made of gold, platinum glitter, and countless gems. The secret of immortality is right here. However, still be careful! Danger is still around!]]></description>
+    <object name="throne">
+      <inherit name="editor_object" />
+      <alias>the throne of king</alias>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <look>This throne is glittering.</look>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <sit type="script">
+        msg ("Suddenly, arrows coming up from the throne pierced you to death. What a pity. You could have reached immortality.")
+        finish
+      </sit>
+      <inspect type="script">
+        if (Got(magnifier)) {
+          msg ("Thanks to the Crystal Magnifier offered by Poseidon.")
+          msg ("After careful inspection, you found hidden colorful gems appearing around the throne's bottom rim! ")
+          MakeObjectVisible (gems)
+        }
+        else {
+          msg ("All you can see with your raw eyes is just a throne. But you are sure that the secret is here! Maybe you have missed something? ")
+        }
+      </inspect>
+      <leave type="script">
+        msg ("Well, you choose to leave it. It's fine. The throne will send you back to where you were at the very beginning.")
+        MoveObject (player, the Ocean of Finman)
+      </leave>
+    </object>
+    <object name="gems">
+      <inherit name="editor_object" />
+      <inherit name="plural" />
+      <visible type="boolean">false</visible>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <look>There are garnets, aquamarines, amethysts, opals, and jade. Who doesn't want any of them?</look>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <carveout type="script">
+        msg ("The fury of the king dwarf was triggered because of your disrespect. How dare you! ")
+        msg ("Arrows coming down from the chandelier pierced into your body. You are killed with no mercy.")
+        finish
+      </carveout>
+      <press type="script">
+        MakeObjectVisible (Amethyst of Immortality)
+        msg ("Widen your eyes and see.")
+      </press>
+    </object>
+    <object name="Amethyst of Immortality">
+      <inherit name="editor_object" />
+      <visible type="boolean">false</visible>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <look>This is the very precious Amethyst of Immortality. It has no impurities, air bubbles, or any other defections in it. Owning this amethyst means owning immortality. You will never die under its protection.</look>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <fetchandtake type="script">
+        msg ("You, as the winner of the history, have won it. Everything you did for it was worth it. You have it in your pocket, which means you will not be afraid of death any more.")
+        msg ("Congratulations!")
+        finish
+      </fetchandtake>
+    </object>
+  </object>
+  <object name="the Mirror Ballroom">
+    <inherit name="editor_room" />
+    <usedefaultprefix type="boolean">false</usedefaultprefix>
+    <description>There are thousands of mirrors standing here. Without additional tools, there is no way to go back to where you were, because the numerous reflections cause you hallucination. You thought you reached somewhere you were before, but actually not. You will lose your way easily. So, be careful.</description>
+    <descprefix>Welcome to the</descprefix>
+    <firstenter type="script">
+    </firstenter>
+    <object name="standing mirrors">
+      <inherit name="editor_object" />
+      <inherit name="plural" />
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <look>All you can see is thousands of reflections.</look>
+      <useindividualverblist />
+      <break>You are totally lost. How do you know whether you are breaking the mirrors or yourself?</break>
+      <touch>Ice cold.</touch>
+      <stareat>You see yourself, many yourselves.</stareat>
+      <walkalong type="script">
+        if (Got(mirror)) {
+          msg ("Thanks to the mirror you brought with you. This lost mirror of dwarves has prevented you from exhausting yourself by walking to death.")
+          msg ("Now the door to the Throne Hall has appeared.")
+          MoveObject (player, the Throne Hall)
+        }
+        else {
+          msg ("Numerous reflections cause you hallucination.")
+          msg ("You walked too much and lost your way, totally.")
+          msg ("You died of exhaustion.")
+          finish
+        }
+      </walkalong>
+    </object>
+  </object>
+  <verb>
+    <property>stareat</property>
+    <pattern>stare at</pattern>
+    <defaultexpression>"You can't stare at " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>inquire</property>
+    <pattern>inquire</pattern>
+    <defaultexpression>"You can't inquire " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>inquireabouttheriddle</property>
+    <pattern>inquire about the riddle</pattern>
+    <defaultexpression>"You can't inquire about the riddle " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>hug</property>
+    <pattern>hug</pattern>
+    <defaultexpression>"You can't hug " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>bowto</property>
+    <pattern>bow to</pattern>
+    <defaultexpression>"You can't bow to " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>catchafinmanfromit</property>
+    <pattern>catch a finman from it</pattern>
+    <defaultexpression>"You can't catch a finman from it " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>beat</property>
+    <pattern>beat</pattern>
+    <defaultexpression>"You can't beat " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>dipintooceanforwater</property>
+    <pattern>dip into ocean for water</pattern>
+    <defaultexpression>"You can't dip into ocean for water " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>drinkwaterfromthewater</property>
+    <pattern>drink water from the water</pattern>
+    <defaultexpression>"You can't drink water from the water " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>detoxify</property>
+    <pattern>detoxify</pattern>
+    <defaultexpression>"You can't detoxify " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>drinkwaterfrom</property>
+    <pattern>drink water from</pattern>
+    <defaultexpression>"You can't drink water from " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>shoutoutspellto</property>
+    <pattern>shout out spell to </pattern>
+    <defaultexpression>"You can't shout out spell to  " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>spell</property>
+    <pattern>spell</pattern>
+    <defaultexpression>"You can't spell " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>laymagicspellto</property>
+    <pattern>lay magic spell to</pattern>
+    <defaultexpression>"You can't lay magic spell to " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>tame</property>
+    <pattern>tame</pattern>
+    <defaultexpression>"You can't tame " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>sing</property>
+    <pattern>sing</pattern>
+    <defaultexpression>"You can't sing " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>singto</property>
+    <pattern>sing to</pattern>
+    <defaultexpression>"You can't sing to " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>singwhalesong</property>
+    <pattern>sing whalesong</pattern>
+    <defaultexpression>"You can't sing whalesong " + object.article + "."</defaultexpression>
+  </verb>
+  <object name="the Swamp of Ant Soldiers">
+    <inherit name="editor_room" />
+    <usedefaultprefix type="boolean">false</usedefaultprefix>
+    <description>Once you enter, you will never get the way back until you figured out a way to defeat the ant solders. Thousands of ant soldiers aggregate here everyday. They will treat anything that is not from their community as the most deadly enemy and spare no effort to annihilate it. The ant soldiers are in hibernation, but this doesn't mean that they are not aware of enemy's existence. Be careful.</description>
+    <attr name="grid_width" type="int">2</attr>
+    <attr name="grid_length" type="int">2</attr>
+    <attr name="grid_label">Swamp</attr>
+    <beforeenter type="script">
+      if (GetBoolean(ant, "killed")) {
+        msg ("It's quiet here.")
+      }
+      else {
+        msg ("Shhhhhh, be quiet. Don't wake the soldiers up.")
+      }
+    </beforeenter>
+    <enter type="script">
+    </enter>
+    <beforefirstenter type="script">
+    </beforefirstenter>
+    <firstenter type="script">
+      msg ("   ")
+      msg ("You are too loud! You woke them up. Now they are coming at you! And you have no way to go back.")
+    </firstenter>
+    <object name="ant">
+      <inherit name="editor_object" />
+      <inherit name="maleplural" />
+      <alias>the ant soldiers</alias>
+      <alt type="stringlist">
+        <value>the ant</value>
+        <value>ant</value>
+        <value>soldier</value>
+      </alt>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <look><![CDATA[The soldiers are all black, with full steel armors. They are ready to kill the enemies.<br/>Oh, don't forget, you are now their biggest enemy!]]></look>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <escapefrom type="script">
+        msg ("You fainted under exhaustion and the ants bit you to death.")
+        finish
+      </escapefrom>
+      <stepon type="script">
+        msg ("You tried to step on them to squeeze them to death, but there were too many of them. When you were focusing on several, other ants climbed to your head and suffocated you to death.")
+        msg ("You are dead, anyway.")
+        finish
+      </stepon>
+    </object>
+    <object name="hole">
+      <inherit name="editor_object" />
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <look>This a black hole, generated by a flurry of mud. There seems to be something hidden in the center of the hole.</look>
+      <visible type="boolean">false</visible>
+      <explore type="script">
+        MakeObjectVisible (ax)
+        msg ("Wow, you found a silver ax shining in the hole, with no mud attached. It is glittering!")
+        AddToInventory (ax)
+      </explore>
+      <object name="ax">
+        <inherit name="editor_object" />
+        <alias>silver ax</alias>
+        <visible type="boolean">false</visible>
+        <usedefaultprefix type="boolean">false</usedefaultprefix>
+        <scenery type="boolean">false</scenery>
+        <look>This is a very heavy ax made of silver. It has sharp edges and a handle full of colorful gems.</look>
+        <inventoryverbs type="stringlist">
+          <value>Look at</value>
+        </inventoryverbs>
+      </object>
+    </object>
+    <exit name="swampToForest" alias="west" to="the Forest of Ghosts">
+      <inherit name="westdirection" />
+      <attr name="grid_length" type="int">4</attr>
+      <visible type="boolean">false</visible>
+    </exit>
+    <exit name="swampToOcean" alias="south" to="the Ocean of Finman">
+      <inherit name="southdirection" />
+      <visible type="boolean">false</visible>
+      <attr name="grid_length" type="int">4</attr>
+    </exit>
+    <exit name="swampToCastle" alias="southwest" to="the Castle of Dwarf">
+      <inherit name="southwestdirection" />
+      <visible type="boolean">false</visible>
+      <attr name="grid_length" type="int">1</attr>
+    </exit>
+  </object>
+  <verb>
+    <property>escapefrom</property>
+    <pattern>escape from</pattern>
+    <defaultexpression>"You can't escape from " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>stepon</property>
+    <pattern>step on</pattern>
+    <defaultexpression>"You can't step on " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>squeeze</property>
+    <pattern>squeeze</pattern>
+    <defaultexpression>"You can't squeeze " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>splash</property>
+    <pattern>splash</pattern>
+    <defaultexpression>"You can't splash " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>explore</property>
+    <pattern>explore</pattern>
+    <defaultexpression>"You can't explore " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>fetchandtake</property>
+    <pattern>fetch and take</pattern>
+    <defaultexpression>"You can't fetch and take " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>cut</property>
+    <pattern>cut</pattern>
+    <defaultexpression>"You can't cut " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>drill</property>
+    <pattern>drill</pattern>
+    <defaultexpression>"You can't drill " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>drum</property>
+    <pattern>drum</pattern>
+    <defaultexpression>"You can't drum " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>snap</property>
+    <pattern>snap</pattern>
+    <defaultexpression>"You can't snap " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>carve</property>
+    <pattern>carve</pattern>
+    <defaultexpression>"You can't carve " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>light</property>
+    <pattern>light</pattern>
+    <defaultexpression>"You can't light " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>weave</property>
+    <pattern>weave</pattern>
+    <defaultexpression>"You can't weave " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>trap</property>
+    <pattern>trap</pattern>
+    <defaultexpression>"You can't trap " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>burn</property>
+    <pattern>burn</pattern>
+    <defaultexpression>"You can't burn " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>collect</property>
+    <pattern>collect</pattern>
+    <defaultexpression>"You can't collect " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>chop</property>
+    <pattern>chop</pattern>
+    <defaultexpression>"You can't chop " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>diptorchin</property>
+    <pattern>dip torch in</pattern>
+    <defaultexpression>"You can't dip torch in " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>showmirrorto</property>
+    <pattern>show mirror to</pattern>
+    <defaultexpression>"You can't show mirror to " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>walkthrough</property>
+    <pattern>walk through</pattern>
+    <defaultexpression>"You can't walk through " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>inspect</property>
+    <pattern>inspect</pattern>
+    <defaultexpression>"You can't inspect " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>leave</property>
+    <pattern>leave</pattern>
+    <defaultexpression>"You can't leave " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>carveout</property>
+    <pattern>carve out</pattern>
+    <defaultexpression>"You can't carve out " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>press</property>
+    <pattern>press</pattern>
+    <defaultexpression>"You can't press " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>catchafinmanfrom</property>
+    <pattern>catch a finman from</pattern>
+    <defaultexpression>"You can't catch a finman from " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>dipintoocean</property>
+    <pattern>dip into ocean</pattern>
+    <defaultexpression>"You can't dip into ocean " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>tap</property>
+    <pattern>tap</pattern>
+    <defaultexpression>"You can't tap " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>pierce</property>
+    <pattern>pierce</pattern>
+    <defaultexpression>"You can't pierce " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>hold</property>
+    <pattern>hold</pattern>
+    <defaultexpression>"You can't hold " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>twist</property>
+    <pattern>twist</pattern>
+    <defaultexpression>"You can't twist " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>stretch</property>
+    <pattern>stretch</pattern>
+    <defaultexpression>"You can't stretch " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>shake</property>
+    <pattern>shake</pattern>
+    <defaultexpression>"You can't shake " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>playwith</property>
+    <pattern>play with</pattern>
+    <defaultexpression>"You can't play with " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>walkacross</property>
+    <pattern> walk across</pattern>
+    <defaultexpression>"You can't  walk across " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>walkalong</property>
+    <pattern>walk along</pattern>
+    <defaultexpression>"You can't walk along " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>break</property>
+    <pattern>break</pattern>
+    <defaultexpression>"You can't break " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <property>capturesomething</property>
+    <pattern>capture something</pattern>
+    <defaultexpression>"You can't capture something " + object.article + "."</defaultexpression>
+  </verb>
+</asl>
