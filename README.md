@@ -66,7 +66,7 @@ Along with the game dependency chart, there are two additional documents for sup
 2. [Legend and Annotation](https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/legend%20and%20Annotation%20for%20Game%20Chart.pdf): This illustration helps designers to understand the nodes with different shapes in the dependency chart -- which path is critical/alternative; which node represents death/victory, etc.
 
 ### Playtest Report During Interim Implementation:
-Finally, there is a preliminary [playtest report]() of the game. It records several critical checkpoints of the player's difficulty in this game. 
+Finally, there is a preliminary [playtest report](https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/Playtest%20Report.txt) of the game. It records several critical checkpoints of the player's difficulty in this game. 
 Based on the listed difficulties, there are implementation plans for improvement so that bugs and design flaws can be fixed. 
 
 This game also playtested for many times. 
