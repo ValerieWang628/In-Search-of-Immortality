@@ -71,7 +71,17 @@ Along with the game dependency chart, there are two additional documents for sup
 
 1. [Location Map](https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/Detailed%20Location%20Map%20Illustration%20for%20Game.pdf) : This map helps designers to understand the relative positions of the rooms -- which one is to the east/west/north/south of which room, etc.
 
+Snap shot of the location map:
+<p align="center"> 
+<img src="https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/snap/key.png" width= "400" height = "187">
+</p>
+
 2. [Legend and Annotation](https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/legend%20and%20Annotation%20for%20Game%20Chart.pdf): This illustration helps designers to understand the nodes with different shapes in the dependency chart -- which path is critical/alternative; which node represents death/victory, etc.
+
+Snap shot of the annotation:
+<p align="center"> 
+<img src="https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/snap/annotate.png" width= "400" height = "187">
+</p>
 
 ### Playtest Report During Interim Implementation:
 Finally, there is a preliminary [playtest report](https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/Playtest%20Report.txt) of the game. It records several critical checkpoints of the player's difficulty in this game. 
