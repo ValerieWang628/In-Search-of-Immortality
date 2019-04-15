@@ -7,6 +7,10 @@ By interacting with the scripts I have designed, the player will manage to reach
 
 To play the online version of this game, please click: [In-Search-of-Immortality](http://play2.textadventures.co.uk/Play.aspx?id=editor/94ebb875-d288-423a-afb6-44cacc98429d%2fIn+Search+of+Immortality.aslx)
 
+See a snapshot of the online version:
+<p align="center"> 
+<img src="...">
+</p>
 
 ## Game Plot Synopsis:
 In this game, you as the player will launch a quest for the Amethyst of Immortality. 
