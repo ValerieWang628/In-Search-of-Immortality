@@ -9,7 +9,7 @@ To play the online version of this game, please click: [In-Search-of-Immortality
 
 See a snapshot of the online version:
 <p align="center"> 
-<img src="...">
+<img src="https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/OnlineVersionSnap.png" width= "500" height = "367">
 </p>
 
 ## Game Plot Synopsis:
