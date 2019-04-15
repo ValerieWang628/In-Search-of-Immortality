@@ -5,9 +5,9 @@
 This program is written in a language called [Quest](http://textadventures.co.uk/quest), a free and open programming platform specifically for text adventure games.
 By interacting with the scripts I have designed, the player will manage to reach the final goal with the guidance of NPCs. 
 
-To play the online version of this game, please click: [In-Search-of-Immortality](http://play2.textadventures.co.uk/Play.aspx?id=editor/94ebb875-d288-423a-afb6-44cacc98429d%2fIn+Search+of+Immortality.aslx)
+👉🏼To play the online version of this game, please click: [In-Search-of-Immortality](http://play2.textadventures.co.uk/Play.aspx?id=editor/94ebb875-d288-423a-afb6-44cacc98429d%2fIn+Search+of+Immortality.aslx)
 
-See a snapshot of the online version:
+👉🏼See a snapshot of the online version:
 <p align="center"> 
 <img src="https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/snap/OnlineVersionSnap.png" width= "500" height = "367">
 </p>
@@ -52,7 +52,7 @@ In the online playable version, on the top of the web page, there will be a real
 If the player moves him/herself to a specific room, the map will change according to the player's movement.
 This will better help the player to understand the game.
 
-Snapshot of the map:
+👉🏼Snapshot of the map:
 <p align="center"> 
 <img src="https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/snap/map.png" width= "500" height = "479">
 </p>
@@ -66,7 +66,7 @@ It turns out to be very similar to the project management chart I made before.
 (No wonder! Every game is a project that is made up of multiple smaller projects.)
 Thus, the chart also includes concepts like critical path and alternative path.
 
-Snippet of the dependency chart:
+👉🏼Snippet of the dependency chart:
 <p align="center"> 
 <img src="https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/snap/dependency.png" width= "400" height = "552">
 </p>
@@ -76,14 +76,14 @@ Along with the game dependency chart, there are two additional documents for sup
 
 1. [Location Map](https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/Detailed%20Location%20Map%20Illustration%20for%20Game.pdf) : This map helps designers to understand the relative positions of the rooms -- which one is to the east/west/north/south of which room, etc.
 
-Snap shot of the location map:
+👉🏼Snap shot of the location map:
 <p align="center"> 
 <img src="https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/snap/key.png" width= "400" height = "187">
 </p>
 
 2. [Legend and Annotation](https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/legend%20and%20Annotation%20for%20Game%20Chart.pdf): This illustration helps designers to understand the nodes with different shapes in the dependency chart -- which path is critical/alternative; which node represents death/victory, etc.
 
-Snap shot of the annotation:
+👉🏼Snap shot of the annotation:
 <p align="center"> 
 <img src="https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/snap/annotate.png" width= "400" height = "187">
 </p>
