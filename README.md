@@ -66,6 +66,11 @@ It turns out to be very similar to the project management chart I made before.
 (No wonder! Every game is a project that is made up of multiple smaller projects.)
 Thus, the chart also includes concepts like critical path and alternative path.
 
+Snippet of the dependency chart:
+<p align="center"> 
+<img src="https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/snap/dependency.png" width= "400" height = "552">
+</p>
+
 ### Two supplemental Document:
 Along with the game dependency chart, there are two additional documents for supplemental illustration:
 
