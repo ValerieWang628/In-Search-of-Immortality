@@ -9,7 +9,7 @@ To play the online version of this game, please click: [In-Search-of-Immortality
 
 See a snapshot of the online version:
 <p align="center"> 
-<img src="https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/OnlineVersionSnap.png" width= "500" height = "367">
+<img src="https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/snap/OnlineVersionSnap.png" width= "500" height = "367">
 </p>
 
 ## Game Plot Synopsis:
@@ -52,6 +52,10 @@ In the online playable version, on the top of the web page, there will be a real
 If the player moves him/herself to a specific room, the map will change according to the player's movement.
 This will better help the player to understand the game.
 
+Snapshot of the map:
+<p align="center"> 
+<img src="https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/snap/map.png" width= "500" height = "479">
+</p>
 
 ## Game Design Documents:
 ### Main Document:
