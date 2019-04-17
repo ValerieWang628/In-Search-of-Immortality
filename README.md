@@ -65,6 +65,10 @@ This dependency chat is the main design document for this game.
 It turns out to be very similar to the project management chart I made before.
 (No wonder! Every game is a project that is made up of multiple smaller projects.)
 Thus, the chart also includes concepts like critical path and alternative path.
+Similar to project management, when designing the dependency chart, I worked in a backwards order where I set the final goal of the game first, then the second last step before final achievement, and before. 
+This is to make sure the dependency relations and critical paths are all right. When implementing the game with the dependency chart as a reference, I workd in a forward order.
+
+😧Please note: This dependency chart is the ultimate spoiler! If you would like to enjoy the puzzles, please do not look at this design document because it is how I assembled all the plots and traps.
 
 👉🏼Snippet of the dependency chart:
 <p align="center"> 
