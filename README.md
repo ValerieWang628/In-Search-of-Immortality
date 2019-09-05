@@ -5,7 +5,7 @@
 This program is written in a language called [Quest](http://textadventures.co.uk/quest), a free and open programming platform specifically for text adventure games.
 By interacting with the scripts I have designed, the player will manage to reach the final goal with the guidance of NPCs. 
 
-This project was created as one of the assignments of the course Programming for Game Designers. The assignment randomly assigned students with 3 particular words/phrases that must be used in the game. For me, I was assigned with an object called bottled water, a verb called empower, and a place called the forest of ghosts. Thus, the three words was incorporated in my game design. Bottled water works as one of the important tools, 'empower' is one of the transformations and the names of other places were created to match the forest of ghosts.
+This project was created as one of the assignments of the course *Programming for Game Designers*. The assignment randomly assigned students with 3 particular words/phrases that must be used in the game. For me, I was assigned with an object called bottled water, a verb called empower, and a place called the forest of ghosts. Thus, the three words was incorporated in my game design. 'Bottled water' works as one of the important tools, 'empower' is one of the transformations and the names of other places were created to match 'the forest of ghosts'.
 
 👉🏼To play the online version of this game, please click: [In-Search-of-Immortality](http://play2.textadventures.co.uk/Play.aspx?id=editor/94ebb875-d288-423a-afb6-44cacc98429d%2fIn+Search+of+Immortality.aslx)
 
