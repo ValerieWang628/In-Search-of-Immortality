@@ -63,19 +63,21 @@ This will better help the player to understand the game.
 ### Main Document:
 This game is designed via a [game dependency chart](https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/Game%20Dependency%20Flow%20Chart%20for%20In%20Search%20of%20Immortality.pdf). (See what is a [game dependency chart](https://grumpygamer.com/puzzle_dependency_charts))
 
-This dependency chat is the main design document for this game.
+This [dependency chat](https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/Game%20Dependency%20Flow%20Chart%20for%20In%20Search%20of%20Immortality.pdf) is the main design document for this game.
 It turns out to be very similar to the project management chart I made before.
 (No wonder! Every game is a project that is made up of multiple smaller projects.)
-Thus, the chart also includes concepts like critical path and alternative path.
-Similar to project management, when designing the dependency chart, I worked in a backwards order where I set the final goal of the game first, then the second last step before final achievement, and before. 
+Thus, the chart also includes concepts like critical path and alternative path. Some of the steps can be done simultaneously while some depend on other to be done.
+Similar to project management, when designing the dependency chart, I worked in a backwards order where I set the final goal of the game first, then the second last step before final achievement, and on and on. 
 This is to make sure the dependency relations and critical paths are all right. When implementing the game with the dependency chart as a reference, I workd in a forward order.
 
 😧Please note: This dependency chart is the ultimate spoiler! If you would like to enjoy the puzzles, please do not look at this design document because it is how I assembled all the plots and traps.
 
-👉🏼Snippet of the dependency chart: (click the screenshots to jump to the original files)
+👉🏼Snippet of the dependency chart: 
 <p align="center"> 
 <img src="https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/snap/dependency.png" width= "400" height = "552">
 </p>
+
+👉For complete game dependency chart, click [here](https://github.com/ValerieWang628/In-Search-of-Immortality/blob/master/Game%20Dependency%20Flow%20Chart%20for%20In%20Search%20of%20Immortality.pdf)
 
 ### Two supplemental Document:
 Along with the game dependency chart, there are two additional documents for supplemental illustration:
